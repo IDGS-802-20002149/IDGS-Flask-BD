@@ -1,0 +1,71 @@
+{% macro render_input(name, placeholder) %}
+
+<div class="control-group">
+    <div class="controls">
+        <input class="form-control my-3" type="number" name="{{name}}" value="">
+    </div>
+</div>
+
+{%endmacro%}
+
+{% macro render_field(field) %}
+
+<div class="form-control my-2">
+    <div class="controls">
+        {{field.label}}
+        {{field(**kwargs)|safe}}
+    </div>
+</div>
+
+{%if field.error%}
+
+<ul>
+    {%for error in field.errors%}
+    <li style="color: red;">
+        {{error}}
+    </li>
+    {%endfor%}
+</ul>
+
+{%endif%}
+
+{%endmacro%}
+
+{% macro render_out(nombre)%}
+    {%if nombre == "0"%}
+        <td style="background-color: black; color: white;">Negro</td>
+    {%endif%}
+    {%if nombre == "1"%}
+        <td style="background-color: brown; color: white;">Marron</td>
+    {%endif%}
+    {%if nombre == "2"%}
+        <td style="background-color: red; color: white;">Rojo</td>
+    {%endif%}
+    {%if nombre == "3"%}
+        <td style="background-color: orange; color: white;">Naranja</td>
+    {%endif%}
+    {%if nombre == "4"%}
+        <td style="background-color: yellow; color: black;">Amarillo</td>
+    {%endif%}
+    {%if nombre == "5"%}
+        <td style="background-color: green; color: white;">Verde</td>
+    {%endif%}
+    {%if nombre == "6"%}
+        <td style="background-color: blue; color: white;">Azul</td>
+    {%endif%}
+    {%if nombre == "7"%}
+        <td style="background-color: purple; color: white;">Violeta</td>
+    {%endif%}
+    {%if nombre == "8"%}
+        <td style="background-color: gray; color: white;">Gris</td>
+    {%endif%}
+    {%if nombre == "9"%}
+        <td style="background-color: white; color: black;">Blanco</td>
+    {%endif%}
+    {%if nombre == "10"%}
+        <td style="background-color: gold; color: white;">Oro</td>
+    {%endif%}
+    {%if nombre == "11"%}
+        <td style="background-color: silver; color: black;">Plateado</td>
+    {%endif%}
+{%endmacro%}

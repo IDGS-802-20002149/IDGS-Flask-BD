@@ -1,0 +1,62 @@
+{%extends "layout2.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% from "_macros2.html" import render_field, render_out%}
+        <div class="col-3 my-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-success text-center">Calculo de resistencias</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" action="/Actividad3" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        {{render_field(form.banda1)}}
+                        {{render_field(form.banda2)}}
+                        {{render_field(form.banda3)}}
+                        <div class="d-flex justify-content-center">
+                            <label>Elije una tolerancia:</label>
+                            <input class="mx-1" type="radio" name="rbtnOpcion" value="1" checked>Oro 0.5
+                            <input class="mx-1" type="radio" name="rbtnOpcion" value="2">Plata 0.1
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-outline-success" type="submit" name="button" value="Calcular">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 my-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-success text-center">Resultados</h3>
+                </div>
+                <div class="card-body text-center">
+                    <table class="d-flex justify-content-center" style="border-color: black;">
+                        <tr>
+                            <td>Banda 1</td>
+                            <td>Banda 2</td>
+                            <td>Banda 3</td>
+                            <td>Banda 4</td>
+                            <td>valor</td>
+                            <td>Minimo</td>
+                            <td>Maximo</td>
+                        </tr>
+                        <tr>
+                            {{render_out(form.banda1.data)}}
+                            {{render_out(form.banda2.data)}}
+                            {{render_out(form.banda3.data)}}
+                            <td>{{tolerancia}}</td>
+                            <td>{{result}}</td>
+                            <td>{{minimo}}</td>
+                            <td>{{maximo}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
